@@ -31,7 +31,7 @@ function Landing() {
         onSuccess:(reference) => {
             console.log("reference",reference)
             if(Cookies.get("tktplc")){
-          axios.get(`http://localhost:5000/client/payment_update?ref=${reference}&tkt=${Cookies.get("tktplc")}&payplan=${paymentplan}`)
+          axios.get(`https://new-frugetbackend-productions.up.railway.app/client/payment_update?ref=${reference}&tkt=${Cookies.get("tktplc")}&payplan=${paymentplan}`)
           .then(res => {
             if(res.data.status=== "success"){
               setsuccessalert(true)

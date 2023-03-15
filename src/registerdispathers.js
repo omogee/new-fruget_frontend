@@ -87,7 +87,7 @@ function RegisterDispatchers() {
       formdata.append("inputs", JSON.stringify(inputs))
       formdata.append("userdetails", JSON.stringify(userdetails))
       alert(inputs.store_address)
-      axios.post(`http://localhost:5000/client/register_dispatch`, formdata)
+      axios.post(`https://new-frugetbackend-productions.up.railway.app/client/register_dispatch`, formdata)
       .then (res =>{
           if(res.data.status==="success"){
               setalertmessage(`Dear ${userdetails.email}, a confirmation has been sent to your email box`)
@@ -122,7 +122,7 @@ function RegisterDispatchers() {
       //     formdata.append("lat", lat)
       //     formdata.append("lng", lng)
       //     alert(lng)
-      //     axios.post(`http://localhost:5000/client/register_dispatch`, formdata)
+      //     axios.post(`https://new-frugetbackend-productions.up.railway.app/client/register_dispatch`, formdata)
       //     .then (res =>{
       //         if(res.data.status==="success"){
       //             setalertmessage(`Dear ${userdetails.email}, a confirmation has been sent to your email box`)

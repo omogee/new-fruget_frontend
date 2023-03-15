@@ -47,7 +47,7 @@ function SubmittedCart() {
     if(query.get("confirmorder") && didMount.current){
         setloading(true)
         setconfirmingorder(true)
-        axios.get(`http://localhost:5000/client/confirm_rateorder?invoiceNo=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_rateorder?invoiceNo=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
         .then(res =>{
             if(res.data.status === "success"){
                 setTimeout(()=> setloading(false), 800)
@@ -69,7 +69,7 @@ useEffect(()=>{
     document.querySelector(".overalldiv").addEventListener("click",()=>{
         setwarningmodal(false)
     })
-    axios.get(`http://localhost:5000/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
     .then(res =>{
         if(res.data.status === "success"){
    setsubmittedcart(res.data.submittedcart)
@@ -97,10 +97,10 @@ useEffect(()=>{
  }
 const clearsingleorder =(data)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/client/clear_singleorder?invoiceNo=${data.invoiceNo}&productId=${data.productId}&tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/clear_singleorder?invoiceNo=${data.invoiceNo}&productId=${data.productId}&tkt=${Cookies.get("tktplc")}`)
     .then(res =>{     
         if(res.data.status === "success"){
-            axios.get(`http://localhost:5000/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
+            axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
             .then(response =>{
                 if(response.data.status === "success"){
            setsubmittedcart(response.data.submittedcart)
@@ -130,7 +130,7 @@ const clearsingleorder =(data)=>{
     .catch(err => console.warn(err))
 }
 const clearallorder =()=>{
-    axios.get(`http://localhost:5000/client/clear_multipleorder?tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/clear_multipleorder?tkt=${Cookies.get("tktplc")}`)
     .then(res =>{
         if(res.data.status === "success"){
             alert(res.data.status)
@@ -141,7 +141,7 @@ const clearallorder =()=>{
 const opendetails=(properties)=>{
     if(Cookies.get("tktplc")){
   setloading(true)
-  axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
   .then(res =>{ 
     setdisplaydetail(true)
     console.log(res.data.details[0])
@@ -233,7 +233,7 @@ const opendetails=(properties)=>{
         storedetails.store =""
         console.log(storedetails)
 
-        axios.get(`http://localhost:5000/client/confirm_clearorder?store=${store}&storeId=${storedetails.sub_storeId}&dispatchId=${storedetails.sub_dispatchId}&dispatchratings=${JSON.stringify(dispatchratinginputs)}&storeratings=${JSON.stringify(ratinginputs)}&invoiceNo=${query.get("skb")}&pid=${query.get("pid")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_clearorder?store=${store}&storeId=${storedetails.sub_storeId}&dispatchId=${storedetails.sub_dispatchId}&dispatchratings=${JSON.stringify(dispatchratinginputs)}&storeratings=${JSON.stringify(ratinginputs)}&invoiceNo=${query.get("skb")}&pid=${query.get("pid")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
         .then(res =>{
             if(res.data.status === "success"){
                 setsubmittedcart(res.data.submittedcart)

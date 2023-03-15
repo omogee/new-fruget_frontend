@@ -62,7 +62,7 @@ useEffect(()=>{
  // var decryptedData = bytes.toString(CryptoJS.enc.Utf8);
    setdecryptedData(params.customerId)
   if(Cookies.get("tktplc")){
-    axios.get(`http://localhost:5000/client/fetch_client?clientId=${params.customerId}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_client?clientId=${params.customerId}`)
     .then(res =>{
        if(res.data.status === "success"){
         setclient(res.data.clientdetails[0])
@@ -83,10 +83,10 @@ useEffect(()=>{
 },[])
 const followstore=(store)=>{
   setloading(true)
-  axios.get(`http://localhost:5000/client/follow_store?store=${escape(store)}&tkt=${Cookies.get("tktplc")}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/client/follow_store?store=${escape(store)}&tkt=${Cookies.get("tktplc")}`)
   .then(res => {
     if(res.data.status === "success"){
-    axios.get(`http://localhost:5000/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
     .then(res =>{
        if(res.data.status === "success"){
         setclient(res.data.clientdetails[0])
@@ -107,10 +107,10 @@ const followstore=(store)=>{
  }
  const unfollowstore=(store)=>{
   setloading(true)
-  axios.get(`http://localhost:5000/client/unfollow_store?store=${escape(store)}&tkt=${Cookies.get("tktplc")}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/client/unfollow_store?store=${escape(store)}&tkt=${Cookies.get("tktplc")}`)
   .then(res => {
     if(res.data.status === "success"){
-    axios.get(`http://localhost:5000/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
     .then(res =>{
        if(res.data.status === "success"){
         setclient(res.data.clientdetails[0])
@@ -131,10 +131,10 @@ const followstore=(store)=>{
  }
  const followdispatch=(dispatchId)=>{
   setloading(true)
-  axios.get(`http://localhost:5000/client/follow_dispatch?dispatchId=${escape(dispatchId)}&tkt=${Cookies.get("tktplc")}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/client/follow_dispatch?dispatchId=${escape(dispatchId)}&tkt=${Cookies.get("tktplc")}`)
   .then(res => {
     if(res.data.status === "success"){
-    axios.get(`http://localhost:5000/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
     .then(res =>{
        if(res.data.status === "success"){
         setclient(res.data.clientdetails[0])
@@ -156,10 +156,10 @@ const followstore=(store)=>{
  }
  const unfollowdispatch=(dispatchId)=>{
   setloading(true)
-  axios.get(`http://localhost:5000/client/unfollow_dispatch?dispatchId=${escape(dispatchId)}&tkt=${Cookies.get("tktplc")}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/client/unfollow_dispatch?dispatchId=${escape(dispatchId)}&tkt=${Cookies.get("tktplc")}`)
   .then(res => {
     if(res.data.status === "success"){
-    axios.get(`http://localhost:5000/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_client?clientId=${JSON.parse(decryptedData)}`)
     .then(res =>{
        if(res.data.status === "success"){
         setclient(res.data.clientdetails[0])

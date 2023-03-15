@@ -94,7 +94,7 @@ function RegisterStore() {
             formdata.append("lng", lng)
             alert(`${lat} ${lng}`)
             /*
-        axios.post(`http://localhost:5000/client/register_store`, formdata)
+        axios.post(`https://new-frugetbackend-productions.up.railway.app/client/register_store`, formdata)
         .then (res =>{
             if(res.data.status==="success"){
                 setalertmessage(`Dear ${userdetails.email}, a confirmation has been sent to your email box`)

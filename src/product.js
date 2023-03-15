@@ -62,7 +62,7 @@ function Product(props) {
       if(props.store){
         setcurrentPage("storeproducts")
         setloading(true)
-      axios.get(`http://localhost:5000/item?store=${escape(props.store)}&page=${page}&tkt=${Cookies.get("tktplc")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/item?store=${escape(props.store)}&page=${page}&tkt=${Cookies.get("tktplc")}`)
       .then(res => {
         setTimeout(()=> setloading(false), 700)
           setproducts(res.data.products)
@@ -121,7 +121,7 @@ function Product(props) {
 const opendetails=(properties)=>{ 
     if(Cookies.get("tktplc")){
  setloading(true)
- axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+ axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
  .then(res =>{ 
    if(res.data.status==="success"){
     setdisplaydetail(true)
@@ -151,7 +151,7 @@ const addtocart=(properties)=>{
 
         const mainprint =JSON.stringify(print).replace(/[&\/\\#,;+()$~%.'":*?<>{}]/g, '')
         const realprint = mainprint.substring(1, mainprint.length-1)
-    axios.get(`http://localhost:5000/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
    .then(res =>{
     if(res.data.status === "success"){    
         setuserdetails(res.data.userdetails[0])
@@ -164,7 +164,7 @@ const addtocart=(properties)=>{
         if(currentPage === "products" && searchinput.length === 0 && !query.get("search")){
      //       setproducts([])
             setloading(true)
-            axios.get(`http://localhost:5000/item?page=${page}&tkt=${Cookies.get("tktplc") || null}&brand=${category.brand || query.get("brand")}&sorter=${sorter}&category=${category.category || query.get("cat")}`)
+            axios.get(`https://new-frugetbackend-productions.up.railway.app/item?page=${page}&tkt=${Cookies.get("tktplc") || null}&brand=${category.brand || query.get("brand")}&sorter=${sorter}&category=${category.category || query.get("cat")}`)
             .then(res => {
               setTimeout(()=> setloading(false), 700)
                 setproducts(res.data.products)

@@ -26,7 +26,7 @@ export const Product_History = function Product_History(props) {
     const opendetails=(properties)=>{
         navigate(`/shop/details/${properties.details}?pid=${properties.productId}`)
         setloading(true)
-        axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
         .then(res =>{ 
          if(res.data.status === "success"){
           setdisplaydetail(true)
@@ -58,7 +58,7 @@ export const Product_History = function Product_History(props) {
       
             const mainprint =JSON.stringify(print).replace(/[&\/\\#,;+()$~%.'":*?<>{}]/g, '')
             const realprint = mainprint.substring(1, mainprint.length-1)
-        axios.get(`http://localhost:5000/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
        .then(res =>{
         alert(res.data.status)
         if(res.data.status === "success"){     
@@ -166,7 +166,7 @@ export const Verified_Sales = function Verified_Sales(props) {
      const opendetails=(properties)=>{
         navigate(`/shop/details/${properties.details}?pid=${properties.productId}`)
         setloading(true)
-        axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
         .then(res =>{ 
          if(res.data.status === "success"){
           setdisplaydetail(true)

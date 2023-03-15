@@ -100,7 +100,7 @@ function StoreProduct(props) {
 const opendetails=(properties)=>{ 
     if(Cookies.get("tktplc")){
  setloading(true)
- axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+ axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
  .then(res =>{ 
     setdisplaydetail(true)
     console.log(res.data.details[0])
@@ -128,7 +128,7 @@ const addtocart=(properties)=>{
 
         const mainprint =JSON.stringify(print).replace(/[&\/\\#,;+()$~%.'":*?<>{}]/g, '')
         const realprint = mainprint.substring(1, mainprint.length-1)
-    axios.get(`http://localhost:5000/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
    .then(res =>{
     if(res.data.status === "success"){    
         setuserdetails(res.data.userdetails[0])
@@ -141,7 +141,7 @@ const addtocart=(properties)=>{
         if(currentPage === "products" && storesearchinput.length === 0 && !query.get("search")){
      //       setstoreproducts([])
             setloading(true)
-            axios.get(`http://localhost:5000/item?page=${page}&tkt=${Cookies.get("tktplc") || null}&brand=${category.brand || query.get("brand")}&sorter=${sorter}&category=${category.category || query.get("cat")}`)
+            axios.get(`https://new-frugetbackend-productions.up.railway.app/item?page=${page}&tkt=${Cookies.get("tktplc") || null}&brand=${category.brand || query.get("brand")}&sorter=${sorter}&category=${category.category || query.get("cat")}`)
             .then(res => {
               setTimeout(()=> setloading(false), 700)
                 setstoreproducts(res.data.products)

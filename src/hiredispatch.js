@@ -70,7 +70,7 @@ if(hireinput && hireinput.from && hireinput.to){
 }
 const fetchcomments =(dispatchId)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/item/fetch_dispatchcomments?dispatchId=${dispatchId}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_dispatchcomments?dispatchId=${dispatchId}`)
     .then(res =>{
         if(res.data.status === "success"){
       setdispatchcomments(res.data.dispatchcomments)
@@ -83,10 +83,10 @@ const fetchcomments =(dispatchId)=>{
 }
 const followdispatch=(dispatchId)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/client/follow_dispatch?dispatchId=${dispatchId}&tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/follow_dispatch?dispatchId=${dispatchId}&tkt=${Cookies.get("tktplc")}`)
     .then(res => {
       if(res.data.status === "success"){
-        axios.get(`http://localhost:5000/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
         .then(res =>{
             setavailabledispatchers(res.data.availabledispatchers)
             setloading(false)
@@ -100,10 +100,10 @@ const followdispatch=(dispatchId)=>{
    }
    const unfollowdispatch=(dispatchId)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/client/unfollow_dispatch?dispatchId=${dispatchId}&tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/unfollow_dispatch?dispatchId=${dispatchId}&tkt=${Cookies.get("tktplc")}`)
     .then(res => {
       if(res.data.status === "success"){
-        axios.get(`http://localhost:5000/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
         .then(res =>{
             setavailabledispatchers(res.data.availabledispatchers)
             setloading(false)
@@ -147,10 +147,10 @@ const followdispatch=(dispatchId)=>{
    }
    const add_dispatchcomment=(dispatchId)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/item/rate_dispatch?dispatchId=${dispatchId}&tkt=${Cookies.get("tktplc")}&ratinginputs=${JSON.stringify(ratinginputs)}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/item/rate_dispatch?dispatchId=${dispatchId}&tkt=${Cookies.get("tktplc")}&ratinginputs=${JSON.stringify(ratinginputs)}`)
     .then(res =>{
         if(res.data.status==="success"){
-            axios.get(`http://localhost:5000/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
+            axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
             .then(res =>{
                 setavailabledispatchers(res.data.availabledispatchers)
                 setaddcommentId(false)
@@ -165,13 +165,13 @@ const followdispatch=(dispatchId)=>{
    const likecomment=(dispatchratingId)=>{
     if(Cookies.get("tktplc")){
         setloading(true)
-     axios.get(`http://localhost:5000/item/like_dispatchcomment?tkt=${Cookies.get("tktplc")}&dispatchratingId=${dispatchratingId}`)
+     axios.get(`https://new-frugetbackend-productions.up.railway.app/item/like_dispatchcomment?tkt=${Cookies.get("tktplc")}&dispatchratingId=${dispatchratingId}`)
      .then(res => {
        if(res.data.status === "success"){
         if(dispatchcomments){
             setdispatchcomments(res.data.dispatchcomments)
         }
-         axios.get(`http://localhost:5000/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
+         axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
             .then(res =>{
                 setavailabledispatchers(res.data.availabledispatchers)              
                setloading(false)
@@ -185,13 +185,13 @@ const followdispatch=(dispatchId)=>{
    const dislikecomment=(dispatchratingId)=>{
      if(Cookies.get("tktplc")){
         setloading(true)
-       axios.get(`http://localhost:5000/item/dislike_dispatchcomment?tkt=${Cookies.get("tktplc")}&dispatchratingId=${dispatchratingId}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/dislike_dispatchcomment?tkt=${Cookies.get("tktplc")}&dispatchratingId=${dispatchratingId}`)
        .then(res => {
          if(res.data.status === "success"){
            if(dispatchcomments){
             setdispatchcomments(res.data.dispatchcomments)
            }
-           axios.get(`http://localhost:5000/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
+           axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
             .then(res =>{
                 setavailabledispatchers(res.data.availabledispatchers)               
               setloading(false)
@@ -205,7 +205,7 @@ const followdispatch=(dispatchId)=>{
    const confirmratestatus=(dispatchId)=>{
      if(Cookies.get('tktplc')){
         setloading(true)
-        axios.get(`http://localhost:5000/item/confirm_ratedispatchmodal?tkt=${Cookies.get("tktplc")}&dispatchId=${dispatchId}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/item/confirm_ratedispatchmodal?tkt=${Cookies.get("tktplc")}&dispatchId=${dispatchId}`)
         .then(res=>{
             if(res.data.status === "success"){
                 setaddcommentId(dispatchId)

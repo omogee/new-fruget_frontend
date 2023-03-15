@@ -51,7 +51,7 @@ function DispatchReceipts() {
    },[])
    useEffect(()=>{
     if(Cookies.get("tktplc")){
-        axios.get(`http://localhost:5000/client/dispatch_status_view?tkt=${Cookies.get("tktplc")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/dispatch_status_view?tkt=${Cookies.get("tktplc")}`)
         .then(res => {
             if(res.data.status === "success"){
                 console.log("updated successfully")
@@ -62,7 +62,7 @@ function DispatchReceipts() {
     if(query.get("confirmorder") && didMount.current){
         setloading(true)
         setconfirmingorder(true)
-        axios.get(`http://localhost:5000/client/confirm_rateorder?skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_rateorder?skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
         .then(res =>{
             if(res.data.status === "success"){
                 setTimeout(()=> setloading(false), 800)
@@ -81,7 +81,7 @@ useEffect(()=>{
     document.querySelector(".overalldiv").addEventListener("click",()=>{
         setwarningmodal(false)
     })
-    axios.get(`http://localhost:5000/client/fetch_dispatchreciepts?tkt=${Cookies.get("tktplc")}&order=${query.get("order") || order}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_dispatchreciepts?tkt=${Cookies.get("tktplc")}&order=${query.get("order") || order}`)
     .then(res =>{
         if(res.data.status === "success"){
     setdispatchreciepts(res.data.dispatchreciepts)
@@ -109,14 +109,14 @@ useEffect(()=>{
  }
 const clearsingleorder =(data)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/client/clear_singleorder?cartId=${data.cartId}&productId=${data.productId}&tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/clear_singleorder?cartId=${data.cartId}&productId=${data.productId}&tkt=${Cookies.get("tktplc")}`)
     .then(res =>{     
         if(res.data.status === "success"){
             setalertmessage("A confirmation mail has been sent you you, kindly visit your mail to complete this process")
             setrequeststatus("success")
             settargetmodal("order")
             setmodaldisplay("block")
-            axios.get(`http://localhost:5000/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
+            axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
             .then(res =>{
                 if(res.data.status === "success"){
            setdispatchreciepts(res.data.submittedcart)
@@ -135,7 +135,7 @@ const clearsingleorder =(data)=>{
     .catch(err => console.warn(err))
 }
 const clearallorder =()=>{
-    axios.get(`http://localhost:5000/client/clear_multipleorder?tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/clear_multipleorder?tkt=${Cookies.get("tktplc")}`)
     .then(res =>{
         if(res.data.status === "success"){
             console.log(res.data)
@@ -146,7 +146,7 @@ const clearallorder =()=>{
 const opendetails=(properties)=>{
     if(Cookies.get("tktplc")){
   setloading(true)
-  axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
   .then(res =>{ 
     setdisplaydetail(true)
     console.log(res.data.details[0])
@@ -236,7 +236,7 @@ const opendetails=(properties)=>{
         setstore(store)
         storedetails.store =""
         console.log(storedetails)
-        axios.get(`http://localhost:5000/client/confirm_clearorder?store=${store}&storedetails=${JSON.stringify(storedetails)}&dispatchratings=${JSON.stringify(dispatchratinginputs)}&storeratings=${JSON.stringify(ratinginputs)}&skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_clearorder?store=${store}&storedetails=${JSON.stringify(storedetails)}&dispatchratings=${JSON.stringify(dispatchratinginputs)}&storeratings=${JSON.stringify(ratinginputs)}&skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
         .then(res =>{
             if(res.data.status === "success"){
                 setTimeout(()=> setloading(false), 800)
@@ -278,7 +278,7 @@ const opendetails=(properties)=>{
      }else if(order === "customer" || query.get("order") === "customer"){
          setorderdetails(data.customername)
      }
-     axios.get(`http://localhost:5000/client/fetch_ungroupeddispatchreciepts?tkt=${Cookies.get("tktplc")}&invoiceNo=${data.invoiceNo}&customerId=${data.customerId}&storeId=${data.storeId}&order=${query.get("order") || order}`)
+     axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_ungroupeddispatchreciepts?tkt=${Cookies.get("tktplc")}&invoiceNo=${data.invoiceNo}&customerId=${data.customerId}&storeId=${data.storeId}&order=${query.get("order") || order}`)
      .then(res =>{
          if(res.data.status === "success"){
      setmorestorereciept(res.data.ungroupeddispatchreciepts)

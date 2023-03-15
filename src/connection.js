@@ -59,7 +59,7 @@ function Connection(props) {
           const indexermain = parseInt(tkt.split("bkop")[1])
           setownerid(indexermain)
           setgroupdetails({ownerid:parseInt(1)})
-          axios.get(`http://localhost:5000/fetch-connections?tkt=${Cookies.get("tktplc")}`)
+          axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch-connections?tkt=${Cookies.get("tktplc")}`)
           .then(res => {
             setconn(res.data.connections)
           })
@@ -67,21 +67,21 @@ function Connection(props) {
        //   }
         
     socket.on("recieving message", data =>{
-      axios.get(`http://localhost:5000/fetch-connections?tkt=${Cookies.get("tktplc")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch-connections?tkt=${Cookies.get("tktplc")}`)
       .then(res => {
         setconn(res.data.connections)
       })
       .catch(err => console.warn(err))
     })
     socket.on("message status sent", data =>{
-      axios.get(`http://localhost:5000/fetch-connections?tkt=${Cookies.get("tktplc")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch-connections?tkt=${Cookies.get("tktplc")}`)
       .then(res => {
         setconn(res.data.connections)
       })
       .catch(err => console.warn(err))
     })
     socket.on("message status delivered", data =>{
-      axios.get(`http://localhost:5000/fetch-connections?tkt=${Cookies.get("tktplc")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch-connections?tkt=${Cookies.get("tktplc")}`)
       .then(res => {
         setconn(res.data.connections)
       })
@@ -93,14 +93,14 @@ function Connection(props) {
 },[querystring.get("pdx")])
 useEffect(()=>{
   //  socket.on("sending message", data =>{ 
-  // axios.get(`http://localhost:5000/fetch-connections?id=${ownerid}`)
+  // axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch-connections?id=${ownerid}`)
   // .then(res => {
   //   setconn(res.data.connections)
   // })
   // .catch(err => console.warn(err))
   //   })
   //   socket.on("recieving message", data =>{ 
-  //     axios.get(`http://localhost:5000/fetch-connections?id=${ownerid}`)
+  //     axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch-connections?id=${ownerid}`)
   //     .then(res => {
   //       setconn(res.data.connections) 
   //     })ß

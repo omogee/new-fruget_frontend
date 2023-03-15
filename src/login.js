@@ -47,7 +47,7 @@ function Login() {
         const mainprint =JSON.stringify(print).replace(/[&\/\\#,;+()$~%.'":*?<>{}]/g, '')
         const realprint = mainprint.substring(1, mainprint.length-1)
         console.log("realprint", realprint)
-      axios.get(`http://localhost:5000/client/login?email=${inputs.email}&password=${inputs.password}&print=${realprint}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/client/login?email=${inputs.email}&password=${inputs.password}&print=${realprint}`)
       .then(res =>{
         if(res.data.status === "success"){
           const tkt =res.data.tkt

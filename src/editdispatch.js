@@ -9,7 +9,7 @@ function Editdispatch() {
     const params = useParams();
 
     useEffect(()=>{
-       axios.get(`http://localhost:5000/item/fetch_dispatch?dispatchId=${params.dispatchId}&tkt=${Cookies.get("tktplc")}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_dispatch?dispatchId=${params.dispatchId}&tkt=${Cookies.get("tktplc")}`)
        .then(res=>{
         if(res.data.status === "success"){
             setdispatch(res.data.dispatchdetail[0])

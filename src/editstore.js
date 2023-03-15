@@ -9,7 +9,7 @@ function EditStore() {
     const params = useParams();
 
     useEffect(()=>{
-       axios.get(`http://localhost:5000/item/fetch_store?storeId=${params.storeId}&tkt=${Cookies.get("tktplc")}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_store?storeId=${params.storeId}&tkt=${Cookies.get("tktplc")}`)
        .then(res=>{
         if(res.data.status === "success"){
             setstoredetail(res.data.storedetail[0])

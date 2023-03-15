@@ -81,7 +81,7 @@ function Register() {
    useEffect(()=>{
     if(query.get("email") && query.get("step")){
         setloading(true)
-        axios.get(`http://localhost:5000/client/confirm_email/stepTwo?email=${query.get("email")}&step=${query.get("step")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_email/stepTwo?email=${query.get("email")}&step=${query.get("step")}`)
         .then(res => {
             if(res.data.status === "success"){
                 Cookies.remove("cvyx")
@@ -151,7 +151,7 @@ function Register() {
         setEmailerror(false)
         setPassworderror(false)
        setloading(true)
-       axios.get(`http://localhost:5000/client/confirm_email?email=${inputs.email}&password=${inputs.password}&newsupdatesubscription=${newsupdatesubscription}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_email?email=${inputs.email}&password=${inputs.password}&newsupdatesubscription=${newsupdatesubscription}`)
        .then(res =>{
         console.log("res.data", res.data)
         if(res.data.status === "success"){
@@ -171,7 +171,7 @@ function Register() {
        }
     }else if(stepTwo && inputs.name && inputs.contact){      
        setloading(true)
-        axios.get(`http://localhost:5000/client/second_form/stepTwo?step=${query.get("step")}&name=${inputs.name}&contact=${inputs.contact}&gender=${inputs.gender}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/second_form/stepTwo?step=${query.get("step")}&name=${inputs.name}&contact=${inputs.contact}&gender=${inputs.gender}`)
         .then(res =>{
             if(res.data.status === "success"){
                 Cookies.remove("cvyx")
@@ -205,7 +205,7 @@ function Register() {
     formdata.append("step", query.get("step"))
     formdata.append("email", query.get("email"))
 
-  axios.post(`http://localhost:5000/client/third_form/stepThree`, formdata)
+  axios.post(`https://new-frugetbackend-productions.up.railway.app/client/third_form/stepThree`, formdata)
   .then( res => {
    if(res.data.status === "success"){
     Cookies.remove("cvyx")
@@ -229,7 +229,7 @@ function Register() {
  }
  const resend=()=>{
     setloading(true)
-    axios.get(`http://localhost:5000/resend_mail?email=${inputs.email}&password=${inputs.password}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/resend_mail?email=${inputs.email}&password=${inputs.password}`)
     .then(res => {
         if(res.data.status === "success"){
             setshowtimer(true)

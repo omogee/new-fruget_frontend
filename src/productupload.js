@@ -144,7 +144,7 @@ const formdata = new FormData();
       }
   }
   
-  axios.post(`http://localhost:5000/products/seller/productupload`, formdata, config)
+  axios.post(`https://new-frugetbackend-productions.up.railway.app/products/seller/productupload`, formdata, config)
     .then(res => {
         if(res.data.failure){
            // this.setState({Message:res.data.message,displayMessage:"block"})

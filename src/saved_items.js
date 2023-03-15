@@ -41,7 +41,7 @@ useEffect(()=>{
   setcurrentPage("savedproducts")
   if(Cookies.get("tktplc")){
     setloading(true)
- axios.get(`http://localhost:5000/client/fetch_saveditems?tkt=${Cookies.get("tktplc")}`)
+ axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_saveditems?tkt=${Cookies.get("tktplc")}`)
  .then(res =>{
   if(res.data.status === "success"){
    setsavedProducts(res.data.savedItems)
@@ -67,7 +67,7 @@ const deletefromsaved =(id)=>{
  setdisplayaskingmodal(false)
   if(Cookies.get("tktplc")){
     setloading(true)
-    axios.get(`http://localhost:5000/client/delete_saveditems?tkt=${Cookies.get("tktplc")}&savedId=${id}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/delete_saveditems?tkt=${Cookies.get("tktplc")}&savedId=${id}`)
     .then(res =>{
      if(res.data.status === "success"){
       setsavedProducts(res.data.savedproducts)
@@ -96,7 +96,7 @@ const deletefromsaved =(id)=>{
  const opendetails=(properties)=>{
   navigate(`/shop/details/${properties.details}?pid=${properties.productId}`)
   setloading(true)
-  axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
   .then(res =>{ 
    if(res.data.status === "success"){
     setdisplaydetail(true)
@@ -132,7 +132,7 @@ const changeview =(data)=>{
 
       const mainprint =JSON.stringify(print).replace(/[&\/\\#,;+()$~%.'":*?<>{}]/g, '')
       const realprint = mainprint.substring(1, mainprint.length-1)
-  axios.get(`http://localhost:5000/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/client/addtocart?productId=${properties.productId}&tkt=${Cookies.get("tktplc")}&nayv=${realprint}`)
  .then(res =>{
   if(res.data.status === "success"){     
     setshoppingcart(res.data.shoppingcart)

@@ -43,7 +43,7 @@ function AdminChat(props) {
      useEffect(()=>{
 
   /*    if(Cookies.get("tktplc")){
-      axios.get(`http://localhost:5000/fetch_messages?tkt=${Cookies.get("tktplc")}&pdx=${query.get("pdx")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch_messages?tkt=${Cookies.get("tktplc")}&pdx=${query.get("pdx")}`)
       .then(res => {
         if( res.data.status === "success"){
           setmessages(res.data.messages)

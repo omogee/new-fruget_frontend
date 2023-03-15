@@ -23,7 +23,7 @@ export const Trending = function Trending(props) {
     },[])
     useEffect(()=>{
         setloading(true)
-         axios.get(`http://localhost:5000/item/fetch_trends`)
+         axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
          .then(res => {
            setTrends(res.data.trends)
            settopsearched(res.data.topsearched)
@@ -120,7 +120,7 @@ export const Topstores = function Trending(props) {
   },[])
   useEffect(()=>{
       setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_trends`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
        .then(res => {
          setTrends(res.data.trends)
          settopsearched(res.data.topsearched)
@@ -230,7 +230,7 @@ export const Topdispatch = function Trending(props) {
   },[])
   useEffect(()=>{
       setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_trends`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
        .then(res => {
          setTrends(res.data.trends)
          settopsearched(res.data.topsearched)
@@ -322,7 +322,7 @@ export const Topsearched = function Topsearched() {
   },[])
   useEffect(()=>{
       setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_trends`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
        .then(res => {
          setTrends(res.data.trends)
          settopsearched(res.data.topsearched)
@@ -408,7 +408,7 @@ export const Topdiscounted = function Topdiscounted() {
   },[])
   useEffect(()=>{
       setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_trends`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
        .then(res => {
          setTrends(res.data.trends)
          setawoof(res.data.topdiscounted)
@@ -509,7 +509,7 @@ export const Toprated = function Toprated() {
   },[])
   useEffect(()=>{
       setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_trends`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
        .then(res => {
          setTrends(res.data.trends)
          settoprated(res.data.toprated)
@@ -607,7 +607,7 @@ export const Topbrands = function Topbrands() {
   },[])
   useEffect(()=>{
       setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_trends`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
        .then(res => {
          setTrends(res.data.trends)
          settopbrands(res.data.topbrands)
@@ -788,7 +788,7 @@ const [productcomments, setproductcomments]= context["productcomments"]
   },[])
   useEffect(()=>{
      // setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_similiar?brand=${props.brand}&category=${props.category}&subcat1=${props.subcat1}&subcat2=${props.subcat2}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_similiar?brand=${props.brand}&category=${props.category}&subcat1=${props.subcat1}&subcat2=${props.subcat2}`)
        .then(res => {
          setTrends(res.data.trends)
          settopsimiliarbrands(res.data.topsimiliarbrands)
@@ -814,7 +814,7 @@ const [productcomments, setproductcomments]= context["productcomments"]
        const opendetails=(properties)=>{
         if(Cookies.get("tktplc")){
      setloading(true)
-     axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+     axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
      .then(res =>{ 
        setProductDetails(res.data.details[0])
        setAllProductDetails(res.data.details)
@@ -909,7 +909,7 @@ const [productcomments, setproductcomments]= context["productcomments"]
   },[])
   useEffect(()=>{
      // setloading(true)
-       axios.get(`http://localhost:5000/item/fetch_similiar?brand=${props.brand}&category=${props.category}&subcat1=${props.subcat1}&subcat2=${props.subcat2}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_similiar?brand=${props.brand}&category=${props.category}&subcat1=${props.subcat1}&subcat2=${props.subcat2}`)
        .then(res => {
          setsimiliarcat(res.data.similiarcat)
       //   setTimeout(()=> setloading(false), 500)
@@ -934,7 +934,7 @@ const [productcomments, setproductcomments]= context["productcomments"]
        const opendetails=(properties)=>{
         if(Cookies.get("tktplc")){
      setloading(true)
-     axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+     axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
      .then(res =>{   
        setProductDetails(res.data.details[0])
        setAllProductDetails(res.data.details) 
@@ -1026,7 +1026,7 @@ const [productcomments, setproductcomments]= context["productcomments"]
  }, 25000);
   },[])
   useEffect(()=>{
-       axios.get(`http://localhost:5000/item/fetch_samesellerproducts?store=${escape(props.store)}`)
+       axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_samesellerproducts?store=${escape(props.store)}`)
        .then(res => {
          setsamesellerproducts(res.data.samesellerproducts)
      //    setTimeout(()=> setloading(false), 500)
@@ -1052,7 +1052,7 @@ const [productcomments, setproductcomments]= context["productcomments"]
        const opendetails=(properties)=>{
         if(Cookies.get("tktplc")){
      setloading(true)
-     axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+     axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
      .then(res =>{ 
      //  setdisplaydetail(true)
        setProductDetails(res.data.details[0])

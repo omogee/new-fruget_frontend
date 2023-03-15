@@ -3,7 +3,7 @@ import io from "socket.io-client"
 
 //const CryptoJS = require("crypto-js")
 
-const socket = io.connect("http://localhost:5000")
+const socket = io.connect("https://new-frugetbackend-productions.up.railway.app")
 
  /*if(Cookies.get("cvyx")){
     var bytes = CryptoJS.AES.decrypt(Cookies.get("cvyx"), 'my-secret-key@123');

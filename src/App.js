@@ -145,7 +145,7 @@ Geocode.setApiKey("AIzaSyCqXwfK_tAkjq1Uib4BkfDpeAhylCEkfMY");
     })
   },[])
 useEffect(()=>{
-  axios.get(`http://localhost:5000/item/fetch_all_stores`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_stores`)
   .then( res =>{
     if(res.data.status === "success"){
       setstores(res.data.stores)
@@ -245,21 +245,21 @@ useEffect(()=>{
  })
 
  useEffect(()=>{
-  axios.get(`http://localhost:5000/item/fetch_trends`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_trends`)
   .then(res => {
     settopbrands(res.data.topbrands)
     setTimeout(()=> setloading(false), 500)
   })
   .catch(err => console.warn(err))
   
-    axios.get(`http://localhost:5000/item/fetch_categories`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_categories`)
     .then(res =>{
       setsubcat(res.data.subcat)
       setCategories(res.data.category)})
     .catch(err => console.log(err))
 
   if(Cookies.get("tktplc")){
-    axios.get(`http://localhost:5000/fetch_unreadmessages?tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/fetch_unreadmessages?tkt=${Cookies.get("tktplc")}`)
     .then(res => {
       if(res.data.status){
        setnoOfUnreadChat(res.data.noOfUnreadChat)
@@ -267,14 +267,14 @@ useEffect(()=>{
       }
     })
     .catch(err => console.warn(err))
-      axios.get(`http://localhost:5000/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_all_dispatch?tkt=${Cookies.get("tktplc")}`)
       .then(res =>{
         console.log("res.data.availabledispatchers",res.data.availabledispatchers)
           setavailabledispatchers(res.data.availabledispatchers)
       })
       .catch(err => console.warn(err))
 
- axios.get(`http://localhost:5000/item/fetch_visitedproducts?tkt=${Cookies.get("tktplc")}`)
+ axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_visitedproducts?tkt=${Cookies.get("tktplc")}`)
  .then(res =>{
   if(res.data.status === "success"){
    setvisitedproducts(res.data.visitedproducts) 
@@ -282,7 +282,7 @@ useEffect(()=>{
  })
  .catch(err => console.warn(err))
 
- axios.get(`http://localhost:5000/client/fetch_verified_sales?tkt=${Cookies.get("tktplc")}`)
+ axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_verified_sales?tkt=${Cookies.get("tktplc")}`)
  .then(res =>{
   if(res.data.status === "success"){
     setcompleted_purchase(res.data.completed_purchase) 
@@ -303,7 +303,7 @@ useEffect(()=>{
    if(searchinput && searchinput.length > 0 || query.get("search")){
     setdisplaycategories(true)
     setloading(true)
-    axios.get(`http://localhost:5000/item/search?page=${page || 1}&sorter=${query.get("sby")}&searchinput=${searchinput || query.get("search")}&setting=${query.get("search") ? true : false}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/item/search?page=${page || 1}&sorter=${query.get("sby")}&searchinput=${searchinput || query.get("search")}&setting=${query.get("search") ? true : false}`)
     .then(res => {
       setproducts(res.data.products)
       if(res.data.numprod[0] && res.data.numprod[0].numprod > 0){
@@ -321,7 +321,7 @@ useEffect(()=>{
     if(currentPage === "storeproducts" && storesearchinput.length === 0){
       setcurrentPage("storeproducts")
       setloading(true)
-    axios.get(`http://localhost:5000/item/search/fetch_storeproducts?&storesearchinput=${storesearchinput}&store=${escape(category.store || query.get("store")) || "null"}&brand=${category.brand || query.get("brand")}&page=${page}&tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/item/search/fetch_storeproducts?&storesearchinput=${storesearchinput}&store=${escape(category.store || query.get("store")) || "null"}&brand=${category.brand || query.get("brand")}&page=${page}&tkt=${Cookies.get("tktplc")}`)
     .then(res => {
       setTimeout(()=> setloading(false), 700)
         setstoreproducts(res.data.products)
@@ -361,7 +361,7 @@ useEffect(()=>{
     if(currentPage === "products" && searchinput.length === 0 && !query.get("search")){
       setproducts([])
       setloading(true)
-      axios.get(`http://localhost:5000/item?page=${page}&coord=${JSON.stringify(coord)}&tkt=${Cookies.get("tktplc") || null}&brand=${category.brand || query.get("brand")}&sorter=${sorter}&category=${category.category || query.get("cat")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/item?page=${page}&coord=${JSON.stringify(coord)}&tkt=${Cookies.get("tktplc") || null}&brand=${category.brand || query.get("brand")}&sorter=${sorter}&category=${category.category || query.get("cat")}`)
       .then(res => {
         setTimeout(()=> setloading(false), 700)
           setproducts(res.data.products)
@@ -376,7 +376,7 @@ useEffect(()=>{
         setcurrentPage("storeproducts")
         setloading(true)
         //store=${escape(props.store)}
-      axios.get(`http://localhost:5000/item/fetch_storeproducts?store=${(category.store || query.get("store")) || "null"}&coord=${JSON.stringify(coord)}&brand=${category.brand || query.get("brand")}&page=${page}&tkt=${Cookies.get("tktplc")}`)
+      axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_storeproducts?store=${(category.store || query.get("store")) || "null"}&coord=${JSON.stringify(coord)}&brand=${category.brand || query.get("brand")}&page=${page}&tkt=${Cookies.get("tktplc")}`)
       .then(res => {
         setTimeout(()=> setloading(false), 700)
           setstoreproducts(res.data.products)
@@ -395,7 +395,7 @@ useEffect(()=>{
   useEffect(()=>{
     if(Cookies.get("tktplc") && (currentPage !== "login" || currentPage !== "register")){
       setloading(true)
-    axios.get(`http://localhost:5000/client/fetch_userdetails?tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_userdetails?tkt=${Cookies.get("tktplc")}`)
     .then(res =>{
        if(res.data.status === "success"){
         setuserdetails(res.data.userdetails[0])

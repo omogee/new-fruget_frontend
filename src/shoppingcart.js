@@ -78,7 +78,7 @@ function Shoppingcart(props) {
         if(Cookies.get("tktplc")){
         if(!query.get("gby_z") || setting === "list"){
           setloading(true)
-        axios.get(`http://localhost:5000/client/fetch_shoppingcart?tkt=${Cookies.get("tktplc")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_shoppingcart?tkt=${Cookies.get("tktplc")}`)
         .then(res =>{
           var totalregdispatch =0;
           var totalcurdispatch=0;
@@ -156,7 +156,7 @@ function Shoppingcart(props) {
       if(query.get("gby_z") || setting==="grid"){
         setsetting("grid")
           setloading(true)
-        axios.get(`http://localhost:5000/client/fetch_groupedshoppingcart?tkt=${Cookies.get("tktplc")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_groupedshoppingcart?tkt=${Cookies.get("tktplc")}`)
         .then(res =>{
          if(res.data.status === "success"){
             setshoppingcart(res.data.shoppingcart)
@@ -208,7 +208,7 @@ function Shoppingcart(props) {
     }
     }else{
       setquantityalertid("")
-   axios.get(`http://localhost:5000/client/updatequantity?shoppingcartId=${data.id}&productId=${data.productId}&action=${data.action}&tkt=${Cookies.get("tktplc")}`)
+   axios.get(`https://new-frugetbackend-productions.up.railway.app/client/updatequantity?shoppingcartId=${data.id}&productId=${data.productId}&action=${data.action}&tkt=${Cookies.get("tktplc")}`)
    .then( res =>{
  if(res.data.status === "success"){
   var totalregdispatch =0;
@@ -286,7 +286,7 @@ function Shoppingcart(props) {
     setwarningmodal(false)
     setwarningdetails({})
     setloading(true)
-   axios.get(`http://localhost:5000/client/deletecart?shoppingcartId=${shoppingcartId}&tkt=${Cookies.get("tktplc")}`)
+   axios.get(`https://new-frugetbackend-productions.up.railway.app/client/deletecart?shoppingcartId=${shoppingcartId}&tkt=${Cookies.get("tktplc")}`)
    .then( res =>{
  if(res.data.status === "success"){
   var totalcurdispatch=0;
@@ -351,7 +351,7 @@ function Shoppingcart(props) {
     setloading(true)
    if(Cookies.get("tktplc")){
     const tkt = Cookies.get("tktplc")
-    axios.get(`http://localhost:5000/client/save_item?tkt=${Cookies.get("tktplc")}&productId=${data.productId}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/save_item?tkt=${Cookies.get("tktplc")}&productId=${data.productId}`)
     .then(res =>{
         if(res.data.status === "success"){
           setsavedProducts(res.data.savedItems)
@@ -385,7 +385,7 @@ const unsaveItem=(data)=>{
    if(Cookies.get("tktplc")){
     setloading(true)
     const tkt = Cookies.get("tktplc")
-    axios.get(`http://localhost:5000/client/unsave_item?tkt=${Cookies.get("tktplc")}&productId=${data.productId}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/unsave_item?tkt=${Cookies.get("tktplc")}&productId=${data.productId}`)
     .then(res =>{
         if(res.data.status === "success"){
             setsavedProducts(res.data.savedItems)
@@ -411,7 +411,7 @@ const paymentsystemchange=(e)=>{
 }
 const submitcart =()=>{
    setloading(true)
-    axios.get(`http://localhost:5000/client/submit_cart?tkt=${Cookies.get("tktplc")}&sumtotalmain=${sumtotalmain}&paymenttype=${paymenttype}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/submit_cart?tkt=${Cookies.get("tktplc")}&sumtotalmain=${sumtotalmain}&paymenttype=${paymenttype}`)
     .then(res =>{
        if(res.data.status === "success"){
        setshoppingcart(res.data.shoppingcart)
@@ -448,7 +448,7 @@ const deletecartwarning =(properties)=>{
  const opendetails=(properties)=>{
   if(Cookies.get("tktplc")){
 setloading(true)
-axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
 .then(res =>{ 
   setdisplaydetail(true)
   console.log(res.data.details[0])

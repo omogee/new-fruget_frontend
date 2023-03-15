@@ -49,7 +49,7 @@ function InvoiceCart() {
     if(query.get("confirmorder") && didMount.current){
         setloading(true)
         setconfirmingorder(true)
-        axios.get(`http://localhost:5000/client/confirm_rateorder?skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_rateorder?skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
         .then(res =>{
             if(res.data.status === "success"){
                 setTimeout(()=> setloading(false), 800)
@@ -68,7 +68,7 @@ useEffect(()=>{
     document.querySelector(".overalldiv").addEventListener("click",()=>{
         setwarningmodal(false)
     })
-    axios.get(`http://localhost:5000/client/fetch_invoice_cart?tkt=${Cookies.get("tktplc")}&invoiceNo=${params.invoiceno}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_invoice_cart?tkt=${Cookies.get("tktplc")}&invoiceNo=${params.invoiceno}`)
     .then(res =>{
         if(res.data.status === "success"){
    setinvoicecart(res.data.invoicecart)
@@ -96,14 +96,14 @@ useEffect(()=>{
  }
 const clearsingleorder =(data)=>{
     setloading(true)
-    axios.get(`http://localhost:5000/client/clear_singleorder?cartId=${data.cartId}&productId=${data.productId}&tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/clear_singleorder?cartId=${data.cartId}&productId=${data.productId}&tkt=${Cookies.get("tktplc")}`)
     .then(res =>{     
         if(res.data.status === "success"){
             setalertmessage("A confirmation mail has been sent you you, kindly visit your mail to complete this process")
             setrequeststatus("success")
             settargetmodal("order")
             setmodaldisplay("block")
-            axios.get(`http://localhost:5000/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
+            axios.get(`https://new-frugetbackend-productions.up.railway.app/client/fetch_submitted_cart?tkt=${Cookies.get("tktplc")}`)
             .then(res =>{
                 if(res.data.status === "success"){
            setinvoicecart(res.data.invoicecart)
@@ -122,7 +122,7 @@ const clearsingleorder =(data)=>{
     .catch(err => console.warn(err))
 }
 const clearallorder =()=>{
-    axios.get(`http://localhost:5000/client/clear_multipleorder?tkt=${Cookies.get("tktplc")}`)
+    axios.get(`https://new-frugetbackend-productions.up.railway.app/client/clear_multipleorder?tkt=${Cookies.get("tktplc")}`)
     .then(res =>{
         if(res.data.status === "success"){
             console.log(res.data)
@@ -133,7 +133,7 @@ const clearallorder =()=>{
 const opendetails=(properties)=>{
     if(Cookies.get("tktplc")){
   setloading(true)
-  axios.get(`http://localhost:5000/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
+  axios.get(`https://new-frugetbackend-productions.up.railway.app/item/fetch_details?tkt=${Cookies.get("tktplc")}&details=${properties.details}&productId=${properties.productId}`)
   .then(res =>{ 
     setdisplaydetail(true)
     console.log(res.data.details[0])
@@ -223,7 +223,7 @@ const opendetails=(properties)=>{
         setstore(store)
         storedetails.store =""
         console.log(storedetails)
-        axios.get(`http://localhost:5000/client/confirm_clearorder?store=${store}&storedetails=${JSON.stringify(storedetails)}&dispatchratings=${JSON.stringify(dispatchratinginputs)}&storeratings=${JSON.stringify(ratinginputs)}&skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
+        axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_clearorder?store=${store}&storedetails=${JSON.stringify(storedetails)}&dispatchratings=${JSON.stringify(dispatchratinginputs)}&storeratings=${JSON.stringify(ratinginputs)}&skb=${query.get("skb")}&pid=${query.get("pid")}&clear=${query.get("single")}&tkt=${Cookies.get("tktplc")}&confirmId=${query.get("confirmorder")}`)
         .then(res =>{
             if(res.data.status === "success"){
                 setTimeout(()=> setloading(false), 800)

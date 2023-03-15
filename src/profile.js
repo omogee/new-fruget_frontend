@@ -102,7 +102,7 @@ const submitprofile =()=>{
  formdata.append("inputs", JSON.stringify(inputs))
  formdata.append("files", profilepicture)
 
-  axios.post(`http://localhost:5000/client/edit_profile`, formdata)
+  axios.post(`https://new-frugetbackend-productions.up.railway.app/client/edit_profile`, formdata)
   .then( res => {
     if(res.data.status === "success"){
    setloading(false)
@@ -135,7 +135,7 @@ const settoshow=(show)=>{
 }
 const sendconfirmation=()=>{
    setloading(true)
-   axios.get(`http://localhost:5000/client/confirm_registered_email?email=${userdetails.email}&customerId=${userdetails.customerId}`)
+   axios.get(`https://new-frugetbackend-productions.up.railway.app/client/confirm_registered_email?email=${userdetails.email}&customerId=${userdetails.customerId}`)
    .then(res =>{
     if(res.data.status === "success"){
       setalertmessage(res.data.message)
